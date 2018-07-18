@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMap from './components/google_map';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 import './App.css';
 
 class App extends Component {
@@ -10,11 +12,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div style={{height: 500}}>
-          Map me!
-          <button onClick={() => this.setState({ lat: 40.7128, lng: -74.005})}>
+        <Sidebar />
+        <div className="Main">
+          <Header />
+          {/* Map me!
+          <button onClick={() => this.setState({ lat: 40.7128, lng: -74.005 })}>
             New York
-          </button>
+          </button> */}
           <GoogleMap lat={this.state.lat} lng={this.state.lng} />
         </div>
       </div>
