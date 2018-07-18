@@ -7,7 +7,15 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-    this.state = { lat: 51.523673, lng: -0.07291799999995874 };
+    this.state = {
+      locations: [
+        { title: 'Smokestak', location: { lat: 51.523673, lng: -0.07291799999995874 }},
+        { title: 'The Bike Shed', location: { lat: 51.5270352, lng: -0.07888700000000881 }},
+        { title: 'Bodean\'s', location: { lat: 51.5281427, lng: -0.09120469999993475 }},
+        { title: 'Tramshed', location: { lat: 51.52586489999999, lng: -0.08164069999997992 }},
+        { title: 'Red Dog Saloon', location: { lat: 51.5274037, lng: -0.08067879999998695 }}
+      ]
+    };
   }
   render() {
     return (
@@ -19,7 +27,7 @@ class App extends Component {
           <button onClick={() => this.setState({ lat: 40.7128, lng: -74.005 })}>
             New York
           </button> */}
-          <GoogleMap lat={this.state.lat} lng={this.state.lng} />
+          <GoogleMap locations={this.state.locations} lat={51.523673} lng={-0.07291799999995874} />
         </div>
       </div>
     );
