@@ -9,7 +9,14 @@ export default class extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.map.panTo({ lat: nextProps.lat, lng: nextProps.lng })
+    // this.map.panTo({ lat: nextProps.lat, lng: nextProps.lng });
+
+    // we request the foursquare data in App.js
+    // we pass down the foursquare data into the google_map component
+    // if foursquare data has been passed as a prop
+    if (nextProps.restaurants) {
+      MapUtils.addInfoWindows(this.map, nextProps.restaurants, nextProps.locations);
+    }
   }
 
   componentDidMount() {

@@ -14,8 +14,19 @@ class App extends Component {
         { title: 'Bodean\'s', location: { lat: 51.5281427, lng: -0.09120469999993475 }},
         { title: 'Tramshed', location: { lat: 51.52586489999999, lng: -0.08164069999997992 }},
         { title: 'Red Dog Saloon', location: { lat: 51.5274037, lng: -0.08067879999998695 }}
-      ]
+      ],
+      restaurants: []
     };
+  }
+  componentDidMount() {
+    fetch(' https://demo7381913.mockable.io')
+      .then(response => response.json())
+      .then(parsed => parsed.response.venue)
+      .then(venue => {
+        this.setState({
+          restaurants: venue
+        });
+      });
   }
   render() {
     return (
@@ -27,7 +38,12 @@ class App extends Component {
           <button onClick={() => this.setState({ lat: 40.7128, lng: -74.005 })}>
             New York
           </button> */}
-          <GoogleMap locations={this.state.locations} lat={51.523673} lng={-0.07291799999995874} />
+          <GoogleMap
+            locations={this.state.locations}
+            restaurants={this.state.restaurants}
+            lat={51.523673}
+            lng={-0.07291799999995874}
+            />
         </div>
       </div>
     );

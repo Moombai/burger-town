@@ -6,9 +6,11 @@ const icon = {
   anchor: new window.google.maps.Point(0, 0)
 };
 
+const markers = [];
+const infowindow = new window.google.maps.InfoWindow();
+
 function displayMarkers(locations, map) {
   const bounds = new window.google.maps.LatLngBounds();
-  const markers = [];
 
   // Add multiple markers
   for (let i = 0; i < locations.length; i++) {
@@ -30,4 +32,29 @@ function displayMarkers(locations, map) {
   map.fitBounds(bounds);
 }
 
-export { icon, displayMarkers };
+// add info to marker if the location and restaurant match
+function addInfoWindows(map, restaurants, locations) {
+  markers.forEach(marker => {
+    var restaurant = restaurants;
+
+    window.google.maps.event.addListener(marker, 'click', function() {
+      var contentString = `
+        <div id="content">
+          <h3>${restaurant.name}</h3>
+          <p>${restaurant.location.address}<br>
+            ${restaurant.location.city}<br>
+            ${restaurant.location.postalCode}
+          <p>Likes: <strong>${restaurant.likes.count}</strong></p>
+          <a href="${restaurant.canonicalUrl}">Read More</a>
+        </div>`;
+      // info window info
+      infowindow.setContent(contentString);
+      infowindow.open(map, marker);
+    })
+
+  })
+  // if location.title === response.venue.name
+  // add event listener to marker and related info
+}
+
+export { icon, displayMarkers, addInfoWindows };
