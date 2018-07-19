@@ -6,6 +6,10 @@ import './App.css';
 
 class App extends Component {
   constructor() {
+    // TODO:
+    // Add proper data structure to hold data from all restaurant venues
+    // (at the moment we just have one restaurant)
+    // idea: we could run a promise.all before updating state with the appropriate data structure
     super();
     this.state = {
       locations: [
@@ -19,7 +23,8 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch(' https://demo7381913.mockable.io')
+    // fetch(' https://demo7381913.mockable.io')
+    fetch('http://localhost:8888/mock-1.json')
       .then(response => response.json())
       .then(parsed => parsed.response.venue)
       .then(venue => {

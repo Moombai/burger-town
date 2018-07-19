@@ -16,7 +16,7 @@ function displayMarkers(locations, map) {
   for (let i = 0; i < locations.length; i++) {
     // get position and title from locations
     const position = locations[i].location;
-    // const title = locations[i].title;
+    const title = locations[i].title;
 
     // create new marker for every location
     var marker = new window.google.maps.Marker({
@@ -24,7 +24,8 @@ function displayMarkers(locations, map) {
       position: position,
       animation: window.google.maps.Animation.DROP,
       id: i,
-      icon: icon
+      icon: icon,
+      title: title
     });
     markers.push(marker);
     bounds.extend(markers[i].position);
@@ -35,6 +36,17 @@ function displayMarkers(locations, map) {
 // add info to marker if the location and restaurant match
 function addInfoWindows(map, restaurants, locations) {
   markers.forEach(marker => {
+
+    // // find the restaurant by marker title
+    // const found = restaurants.find(function (restaurant) {
+    //   return restaurant.name === marker.title;
+    // });
+
+    // // restaruant will be the found value
+    // const restaurant = found;
+
+    // // displayed data should now be correct
+
     var restaurant = restaurants;
 
     window.google.maps.event.addListener(marker, 'click', function() {
