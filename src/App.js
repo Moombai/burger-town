@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Sidebar />
+        <Sidebar locations={this.state.locations} />
         <div className="Main">
           <Header />
           {/* Map me!
