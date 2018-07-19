@@ -33,24 +33,26 @@ function displayMarkers(locations, map) {
   map.fitBounds(bounds);
 }
 
-// add info to marker if the location and restaurant match
+/*
+** When adding information to the infoWindow, the marker titles are used as
+** identification. The addInfoWindows function compares marker titles with the
+** name of venues fetched from our api.
+ */
 function addInfoWindows(map, restaurants, locations) {
   markers.forEach(marker => {
 
-    // // find the restaurant by marker title
-    // const found = restaurants.find(function (restaurant) {
-    //   return restaurant.name === marker.title;
-    // });
+    // find the restaurant by marker title
+    const found = restaurants.find(function (restaurant) {
+      const venue = restaurant.response.venue;
+      return venue.name === marker.title;
+    });
 
-    // // restaruant will be the found value
-    // const restaurant = found;
+    // Add marker if the restaurant venue is found
+    const restaurant = found.response.venue;
 
-    // // displayed data should now be correct
-
-    var restaurant = restaurants;
-
-    window.google.maps.event.addListener(marker, 'click', function() {
-      var contentString = `
+    if (restaurant) {
+      window.google.maps.event.addListener(marker, 'click', function () {
+        var contentString = `
         <div id="content">
           <h3>${restaurant.name}</h3>
           <p>${restaurant.location.address}<br>
@@ -59,14 +61,12 @@ function addInfoWindows(map, restaurants, locations) {
           <p>Likes: <strong>${restaurant.likes.count}</strong></p>
           <a href="${restaurant.canonicalUrl}">Read More</a>
         </div>`;
-      // info window info
-      infowindow.setContent(contentString);
-      infowindow.open(map, marker);
-    })
-
-  })
-  // if location.title === response.venue.name
-  // add event listener to marker and related info
+        // info window info
+        infowindow.setContent(contentString);
+        infowindow.open(map, marker);
+      });
+    };
+  });
 }
 
 export { icon, displayMarkers, addInfoWindows };
