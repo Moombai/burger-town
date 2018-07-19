@@ -1,11 +1,20 @@
 import React from 'react';
 
+
 const Sidebar = (props) => (
   <div className="Sidebar">
     <div className="container">
-      <input type="text" placeholder="Search by location" />
+      <input
+        type="text"
+        placeholder="Search by location"
+        value={props.query}
+        onChange={props.handleQuery}
+      />
+      {/* Given a list of locations we compare the values with our search query */}
       <ul>
-        {props.locations.map((location, key) => (
+        {props.locations
+          .filter(location => location.title.toLowerCase().includes(props.query.toLowerCase()))
+          .map((location, key) => (
           <li key={key}>{location.title}</li>
         )) }
       </ul>

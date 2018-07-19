@@ -15,9 +15,17 @@ class App extends Component {
         { title: 'Tramshed', location: { lat: 51.52586489999999, lng: -0.08164069999997992 }},
         { title: 'Red Dog Saloon', location: { lat: 51.5274037, lng: -0.08067879999998695 }}
       ],
-      restaurants: []
+      restaurants: [],
+      query: ""
     };
   }
+
+  handleQuery = (event) => {
+    this.setState({
+      query: event.target.value
+    });
+  }
+
   componentDidMount() {
     var venue1 = fetch('http://localhost:8888/mock-1.json').then(response => response.json());
     var venue2 = fetch('http://localhost:8888/mock-2.json').then(response => response.json());
@@ -35,7 +43,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Sidebar locations={this.state.locations} />
+        <Sidebar
+          locations={this.state.locations}
+          handleQuery={this.handleQuery}
+          query={this.state.query}
+        />
         <div className="Main">
           <Header />
           {/* Map me!
