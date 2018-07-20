@@ -69,4 +69,23 @@ function addInfoWindows(map, restaurants, locations) {
   });
 }
 
-export { icon, displayMarkers, addInfoWindows };
+function updateMarkerDisplay(map, locations) {
+
+  markers.forEach(marker => {
+    // try to match each marker with a location (markers is a global variable)
+    const found = locations.find(location => {
+      return location === marker.title;
+    })
+    // if a marker has a location and is not visible we should show it!
+    if (found && marker.getMap() === null) {
+      marker.setMap(map)
+    } else if (found && marker.getMap() !== null) {
+      // take no action if marker is already on the map
+      return;
+    } else { // Otherwise the marker does not have a location. Hide it
+      marker.setMap(null)
+    }
+  });
+}
+
+export { icon, displayMarkers, addInfoWindows, updateMarkerDisplay };

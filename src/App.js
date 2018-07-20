@@ -15,15 +15,23 @@ class App extends Component {
         { title: 'Tramshed', location: { lat: 51.52586489999999, lng: -0.08164069999997992 }},
         { title: 'Red Dog Saloon', location: { lat: 51.5274037, lng: -0.08067879999998695 }}
       ],
+      displayedLocations: ['Smokestak', 'The Bike Shed', 'Bodean\'s', 'Tramshed', 'Red Dog Saloon'],
       restaurants: [],
       query: ""
     };
+    this.locationStore = ['Smokestak', 'The Bike Shed', 'Bodean\'s', 'Tramshed', 'Red Dog Saloon'];
   }
 
   handleQuery = (event) => {
     this.setState({
       query: event.target.value
     });
+    // const updatedLocations = this.state.displayedLocations
+    //                           .filter(location => location.toLowerCase().includes(event.target.value.toLowerCase()));
+    this.setState({
+      displayedLocations: this.locationStore
+        .filter(location => location.toLowerCase().includes(event.target.value.toLowerCase()))
+    })
   }
 
   componentDidMount() {
@@ -56,6 +64,7 @@ class App extends Component {
           </button> */}
           <GoogleMap
             locations={this.state.locations}
+            displayedLocations={this.state.displayedLocations}
             restaurants={this.state.restaurants}
             lat={51.523673}
             lng={-0.07291799999995874}

@@ -16,6 +16,7 @@ export default class extends Component {
     // if foursquare data has been passed as a prop
     if (nextProps.restaurants) {
       MapUtils.addInfoWindows(this.map, nextProps.restaurants, nextProps.locations);
+      MapUtils.updateMarkerDisplay(this.map, nextProps.displayedLocations);
     }
   }
 
