@@ -18,6 +18,10 @@ export default class extends Component {
       MapUtils.addInfoWindows(this.map, nextProps.restaurants, nextProps.locations);
       MapUtils.updateMarkerDisplay(this.map, nextProps.displayedLocations);
     }
+
+    if (nextProps.clickedListItem) {
+      MapUtils.openMarkersfromList(this.map, nextProps.clickedListItem);
+    }
   }
 
   componentDidMount() {

@@ -17,7 +17,8 @@ class App extends Component {
       ],
       displayedLocations: ['Smokestak', 'The Bike Shed', 'Bodean\'s', 'Tramshed', 'Red Dog Saloon'],
       restaurants: [],
-      query: ""
+      query: "",
+      clickedListItem: ""
     };
     this.locationStore = ['Smokestak', 'The Bike Shed', 'Bodean\'s', 'Tramshed', 'Red Dog Saloon'];
   }
@@ -32,6 +33,11 @@ class App extends Component {
       displayedLocations: this.locationStore
         .filter(location => location.toLowerCase().includes(event.target.value.toLowerCase()))
     })
+  }
+
+  handleClick = (event) => {
+    const listContent = event.target.textContent;
+    this.setState({clickedListItem: listContent});
   }
 
   componentDidMount() {
@@ -54,6 +60,7 @@ class App extends Component {
         <Sidebar
           locations={this.state.locations}
           handleQuery={this.handleQuery}
+          handleClick={this.handleClick}
           query={this.state.query}
         />
         <div className="Main">
@@ -66,6 +73,7 @@ class App extends Component {
             locations={this.state.locations}
             displayedLocations={this.state.displayedLocations}
             restaurants={this.state.restaurants}
+            clickedListItem={this.state.clickedListItem}
             lat={51.523673}
             lng={-0.07291799999995874}
             />

@@ -15,7 +15,7 @@ const Sidebar = (props) => (
         {props.locations
           .filter(location => location.title.toLowerCase().includes(props.query.toLowerCase()))
           .map((location, key) => (
-          <li key={key}>{location.title}</li>
+          <li key={key} onClick={props.handleClick}>{location.title}</li>
         )) }
       </ul>
     </div>

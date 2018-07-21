@@ -88,4 +88,24 @@ function updateMarkerDisplay(map, locations) {
   });
 }
 
-export { icon, displayMarkers, addInfoWindows, updateMarkerDisplay };
+function openMarkersfromList(map, location) {
+  // find a marker associated with the given location
+  var i;
+  let foundMarker = markers.find(marker => {
+    return marker.title = location;
+  });
+
+  if (foundMarker) {
+    // find the index of the relevant marker
+    markers.forEach((marker,index) => {
+      if (marker.title === foundMarker.title) {
+        i = index;
+      }
+    })
+
+    // dynamically open the correct marker
+    window.google.maps.event.trigger(markers[i], 'click');
+  }
+}
+
+export { icon, displayMarkers, addInfoWindows, updateMarkerDisplay, openMarkersfromList };
