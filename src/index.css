@@ -9,6 +9,34 @@ html, body {
   height: 89%;
 }
 
+/* Header */
+.Header {
+  position: relative;
+}
+
+#menu {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
+/* Burger Menu */
+/* https://www.w3schools.com/howto/howto_css_menu_icon.asp */
+.hamburger {
+  width: 35px;
+  height: 5px;
+  background-color: #02b3e4;;
+  margin: 6px 0;
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .hamburger {
+    display: block;
+  }
+}
+
 /* Sidebar CSS */
 .container {
   margin-left: 40px;

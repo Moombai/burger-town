@@ -18,7 +18,8 @@ class App extends Component {
       displayedLocations: ['Smokestak', 'The Bike Shed', 'Bodean\'s', 'Tramshed', 'Red Dog Saloon'],
       restaurants: [],
       query: "",
-      clickedListItem: ""
+      clickedListItem: "",
+      extendSidebar: false
     };
     this.locationStore = ['Smokestak', 'The Bike Shed', 'Bodean\'s', 'Tramshed', 'Red Dog Saloon'];
   }
@@ -38,6 +39,13 @@ class App extends Component {
   handleClick = (event) => {
     const listContent = event.target.textContent;
     this.setState({clickedListItem: listContent});
+  }
+
+  handleSidebarToggle = (e) => {
+    e.preventDefault();
+    this.setState({
+      extendSidebar: !this.state.extendSidebar
+    });
   }
 
   componentDidMount() {
@@ -61,10 +69,11 @@ class App extends Component {
           locations={this.state.locations}
           handleQuery={this.handleQuery}
           handleClick={this.handleClick}
+          extendSidebar={this.state.extendSidebar}
           query={this.state.query}
         />
-        <div className="Main">
-          <Header />
+        <div className={`Main ${this.state.extendSidebar ? 'main-extra' : ''}`}>
+          <Header handleSidebarToggle={this.handleSidebarToggle} />
           {/* Map me!
           <button onClick={() => this.setState({ lat: 40.7128, lng: -74.005 })}>
             New York

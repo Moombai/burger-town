@@ -17,6 +17,12 @@
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .main-extra {
+    padding-left: 275px;
+  }
+}
+
 .Sidebar {
   background: #2e3d49;
   position: absolute;
@@ -29,6 +35,13 @@
 @media only screen and (max-width: 500px) {
   .Sidebar {
     left: -275px;
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .sidebar-extra {
+    left: 0;
   }
 }
 

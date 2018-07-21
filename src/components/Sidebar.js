@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Sidebar = (props) => (
-  <div className="Sidebar">
+  <div className={`Sidebar ${props.extendSidebar ? 'sidebar-extra' : ''}`}>
     <div className="container">
       <input
         type="text"
