@@ -112,4 +112,10 @@ function openMarkersfromList(map, location) {
   }
 }
 
-export { icon, displayMarkers, addInfoWindows, updateMarkerDisplay, openMarkersfromList };
+function handleMapClick(map) {
+  window.google.maps.event.addListener(map, "click", function (event) {
+    infowindow.close();
+  });
+}
+
+export { icon, displayMarkers, addInfoWindows, updateMarkerDisplay, openMarkersfromList, handleMapClick };

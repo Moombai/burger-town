@@ -17,6 +17,7 @@ export default class extends Component {
     if (nextProps.restaurants) {
       MapUtils.addInfoWindows(this.map, nextProps.restaurants, nextProps.locations);
       MapUtils.updateMarkerDisplay(this.map, nextProps.displayedLocations);
+      MapUtils.handleMapClick(this.map);
     }
 
     if (nextProps.clickedListItem) {
