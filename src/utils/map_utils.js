@@ -64,6 +64,10 @@ function addInfoWindows(map, restaurants, locations) {
         // info window info
         infowindow.setContent(contentString);
         infowindow.open(map, marker);
+
+        // marker animation
+        marker.setAnimation(window.google.maps.Animation.BOUNCE);
+        setTimeout(function () { marker.setAnimation(null); }, 750);
       });
     };
   });
