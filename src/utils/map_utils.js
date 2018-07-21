@@ -90,7 +90,7 @@ function updateMarkerDisplay(map, locations) {
 
 function openMarkersfromList(map, location) {
   // find a marker associated with the given location
-  var i;
+  let i;
   let foundMarker = markers.find(marker => {
     return marker.title = location;
   });
