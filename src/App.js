@@ -29,8 +29,7 @@ class App extends Component {
     this.setState({
       query: event.target.value
     });
-    // const updatedLocations = this.state.displayedLocations
-    //                           .filter(location => location.toLowerCase().includes(event.target.value.toLowerCase()));
+
     this.setState({
       displayedLocations: this.locationStore
         .filter(location => location.toLowerCase().includes(event.target.value.toLowerCase()))
@@ -86,10 +85,6 @@ class App extends Component {
             handleSidebarToggle={this.handleSidebarToggle}
             extendSidebar={this.state.extendSidebar}
           />
-          {/* Map me!
-          <button onClick={() => this.setState({ lat: 40.7128, lng: -74.005 })}>
-            New York
-          </button> */}
           <GoogleMap
             locations={this.state.locations}
             displayedLocations={this.state.displayedLocations}

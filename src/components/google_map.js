@@ -9,11 +9,11 @@ export default class extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // this.map.panTo({ lat: nextProps.lat, lng: nextProps.lng });
 
-    // we request the foursquare data in App.js
-    // we pass down the foursquare data into the google_map component
-    // if foursquare data has been passed as a prop
+    /** As the component cannot re-render we check if it will receive new props before calling
+    ** our Google API methods. React will not controll the map directly. These methods can be found
+    ** in the utils/map_utls.js file
+    **/
     if (nextProps.restaurants && nextProps.restaurants.length > 0) {
       MapUtils.addInfoWindows(this.map, nextProps.restaurants, nextProps.locations);
       MapUtils.updateMarkerDisplay(this.map, nextProps.displayedLocations);
@@ -26,7 +26,7 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    // Create a new map on the given element
+    // The map is created once on the first and only mounting of this component
     this.map = new window.google.maps.Map(this.refs.map, {
       center: { lat: this.props.lat, lng: this.props.lng},
       zoom: 8
