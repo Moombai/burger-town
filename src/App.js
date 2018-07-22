@@ -81,7 +81,10 @@ class App extends Component {
           query={this.state.query}
         />
         <div className={`Main ${this.state.extendSidebar ? 'main-extra' : ''}`}>
-          <Header handleSidebarToggle={this.handleSidebarToggle} />
+          <Header
+            handleSidebarToggle={this.handleSidebarToggle}
+            extendSidebar={this.state.extendSidebar}
+          />
           {/* Map me!
           <button onClick={() => this.setState({ lat: 40.7128, lng: -74.005 })}>
             New York
