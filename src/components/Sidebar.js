@@ -4,8 +4,11 @@ import React from 'react';
 const Sidebar = (props) => (
   <div className={`Sidebar ${props.extendSidebar ? 'sidebar-extra' : ''}`}>
     <div className="container">
+      <label htmlFor="restaurantSearch" className="visuallyhidden">Search: </label>
       <input
+        id="restaurantSearch"
         type="text"
+        name="search"
         placeholder="Search by location"
         value={props.query}
         onChange={props.handleQuery}
@@ -15,7 +18,7 @@ const Sidebar = (props) => (
         {props.locations
           .filter(location => location.title.toLowerCase().includes(props.query.toLowerCase()))
           .map((location, key) => (
-          <li key={key} onClick={props.handleClick}>{location.title}</li>
+            <li key={key} onClick={props.handleClick}><a tabIndex="0">{location.title}</a></li>
         )) }
       </ul>
     </div>

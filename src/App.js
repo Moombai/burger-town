@@ -19,7 +19,8 @@ class App extends Component {
       restaurants: [],
       query: "",
       clickedListItem: "",
-      extendSidebar: false
+      extendSidebar: false,
+      failedRequestMessage: ""
     };
     this.locationStore = ['Smokestak', 'The Bike Shed', 'Bodean\'s', 'Tramshed', 'Red Dog Saloon'];
   }
@@ -36,8 +37,9 @@ class App extends Component {
     })
   }
 
-  handleClick = (event) => {
-    const listContent = event.target.textContent;
+  handleClick = (e) => {
+    e.preventDefault();
+    const listContent = e.target.textContent;
     this.setState({clickedListItem: listContent});
   }
 
@@ -59,7 +61,13 @@ class App extends Component {
       this.setState({
         restaurants: venues
       })
-    });
+    }).catch(err => {
+      const message = "We were unable to load data from foursquare";
+      this.setState({
+        failedRequestMessage: message
+      })
+      console.log(message, err);
+    })
   }
 
   render() {

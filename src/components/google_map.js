@@ -14,7 +14,7 @@ export default class extends Component {
     // we request the foursquare data in App.js
     // we pass down the foursquare data into the google_map component
     // if foursquare data has been passed as a prop
-    if (nextProps.restaurants) {
+    if (nextProps.restaurants && nextProps.restaurants.length > 0) {
       MapUtils.addInfoWindows(this.map, nextProps.restaurants, nextProps.locations);
       MapUtils.updateMarkerDisplay(this.map, nextProps.displayedLocations);
       MapUtils.handleMapClick(this.map);
