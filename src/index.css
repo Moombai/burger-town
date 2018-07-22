@@ -19,6 +19,7 @@ html, body {
   right: 15px;
   top: 15px;
   cursor: pointer;
+  display: none;
 }
 
 /* Burger Menu */
@@ -32,6 +33,9 @@ html, body {
 }
 
 @media only screen and (max-width: 500px) {
+  #menu {
+    display: block;
+  }
   .hamburger {
     display: block;
   }
