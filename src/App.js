@@ -62,7 +62,7 @@ class App extends Component {
         restaurants: venues
       })
     }).catch(err => {
-      const message = "We were unable to load data from foursquare";
+      const message = "Uh oh! We were unable to load your restaurant data.";
       this.setState({
         failedRequestMessage: message
       })
@@ -79,6 +79,7 @@ class App extends Component {
           handleClick={this.handleClick}
           extendSidebar={this.state.extendSidebar}
           query={this.state.query}
+          failedRequestMessage={this.state.failedRequestMessage}
         />
         <div className={`Main ${this.state.extendSidebar ? 'main-extra' : ''}`}>
           <Header

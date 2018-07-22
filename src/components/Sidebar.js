@@ -21,6 +21,9 @@ const Sidebar = (props) => (
             <li key={key} onClick={props.handleClick}><a href={`#map-item-${key}`} role="button">{location.title}</a></li>
         )) }
       </ul>
+      <div className="alert">
+        <p>{props.failedRequestMessage}</p>
+      </div>
     </div>
   </div>
 );

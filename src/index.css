@@ -68,6 +68,14 @@ li {
   color: #02b3e4;
 }
 
+/* Error Message */
+.alert p {
+  font-size: 18px;
+  color: #f56565;
+  padding-right: 5px;
+  padding-top: 25px;
+}
+
 /* Utilities */
 /* content is positioned off screen but available to screen readers */
 .visuallyhidden {
