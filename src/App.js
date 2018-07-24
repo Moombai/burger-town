@@ -22,7 +22,7 @@ class App extends Component {
       extendSidebar: false,
       failedRequestMessage: ""
     };
-    this.locationStore = ['Smokestak', 'The Bike Shed', 'Bodean\'s', 'Tramshed', 'Red Dog Saloon'];
+    this.locationStore = this.state.locations.map(location => location.title);
   }
 
   handleQuery = (event) => {
