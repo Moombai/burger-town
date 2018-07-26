@@ -51,17 +51,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let fetchedVenues = dataUtils.fetchFromFourSquare(
-      [
-      "58188c2b38fab86819349c50",
-      "56372298498eccf54c9b7aef",
-      "557ade61498e2f0253159e93",
-      "4fbabe9be4b0c673b642103c",
-      "4ddbb28e18388dd692371228"
-      ]
-    );
+    dataUtils.fetchFromFourSquare().then(venues => {
 
-    Promise.all(fetchedVenues).then(venues => {
       this.setState({
         restaurants: venues
       })
