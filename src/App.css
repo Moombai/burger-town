@@ -8,6 +8,7 @@
   width: 79%;
   height: 100vh;
   padding-left: 275px;
+  transition: padding-left 400ms linear;
 }
 
 @media only screen and (max-width: 500px) {
@@ -30,6 +31,7 @@
   height: 100vh;
   top: 0;
   left: 0;
+  transition: left 400ms linear;
 }
 
 @media only screen and (max-width: 500px) {
