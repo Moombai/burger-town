@@ -4,6 +4,7 @@ const Header = (props) => {
   let status = props.extendSidebar === false ? "false" : "true";
   return (
     <div className="Header">
+      <h1 className="pageTitle">Burger Town</h1>
       <div
         id="menu"
         role="button"
