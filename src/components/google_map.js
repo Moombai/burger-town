@@ -29,7 +29,8 @@ export default class extends Component {
     // The map is created once on the first and only mounting of this component
     this.map = new window.google.maps.Map(this.refs.map, {
       center: { lat: this.props.lat, lng: this.props.lng},
-      zoom: 8
+      zoom: 8,
+      styles: MapUtils.styles
     });
 
     MapUtils.displayMarkers(this.props.locations, this.map);
