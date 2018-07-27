@@ -53,6 +53,18 @@ class App extends Component {
   componentDidMount() {
     dataUtils.fetchFromFourSquare().then(venues => {
 
+      const checkResponse = function(response) {
+        return response.meta.code !== 200;
+      }
+
+      const responseInvalid = venues.some(checkResponse);
+
+      if (responseInvalid) {
+        console.log("We have an invalid response");
+      } else {
+        console.log("responses seem to be fine");
+      }
+
       this.setState({
         restaurants: venues
       })
