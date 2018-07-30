@@ -2,6 +2,8 @@
 
 Burger town is a single page React application bootstrapped with Facebook's wonderful `create-react-app` toolkit. The application itself shows a number of burger eateries placed on a map and displays further information when the map markers have been clicked. This project demonstrates responsive features in React, integration with third party API’s such as Google Maps (without using library), management of asynchronous data, semantic HTML and accessibility.
 
+You can see a demo on the live site [here](https://laughing-morse-fad012.netlify.com).
+
 ### Dependencies
 - The project was bootstrapped using [Create React App](https://github.com/facebook/create-react-app)
 - Location data has been retrieved using the [FourSquare API](https://developer.foursquare.com/)
